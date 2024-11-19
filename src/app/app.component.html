@@ -14,31 +14,88 @@
       <span>Try free 7 days </span>then $20/mo. thereafter
     </aside>
 
+    @if(!signedUp){
     <main class="form">
-      <input
-        type="text"
-        name="first_name"
-        id="First_Name"
-        placeholder="First Name"
-      />
-      <input
-        type="text"
-        name="last_name"
-        id="Last_Name"
-        placeholder="Last Name"
-      />
-      <input type="email" name="email" id="Email" placeholder="Email Address" />
-      <input
-        type="password"
-        name="password"
-        id="Password"
-        placeholder="Password"
-      />
-      <input type="submit" value="CLAIM YOUR FREE TRAIL" class="form-btn" />
+      <form [formGroup]="signUpForm" (submit)="onSubmit()">
+        <div class="input-wrapper">
+          <input
+            [ngClass]="{ error: error['firstName'] }"
+            type="text"
+            placeholder="First Name"
+            formControlName="firstName"
+          />
+          <div *ngIf="error['firstName']" class="error-message">
+            First Name is required.
+          </div>
+        </div>
+
+        <div class="input-wrapper">
+          <input
+            [ngClass]="{ error: error['lastName'] }"
+            type="text"
+            placeholder="Last Name"
+            formControlName="lastName"
+          />
+          <div *ngIf="error['lastName']" class="error-message">
+            Last Name is required.
+          </div>
+        </div>
+
+        <div class="input-wrapper">
+          <input
+            [ngClass]="{
+              error: error['emailRequired'] || error['emailInvalid']
+            }"
+            type="email"
+            placeholder="Email Address"
+            formControlName="email"
+          />
+          <div *ngIf="error['emailRequired']" class="error-message">
+            Email is required.
+          </div>
+          <div *ngIf="error['emailInvalid']" class="error-message">
+            Invalid email address.
+          </div>
+        </div>
+
+        <div class="input-wrapper">
+          <input
+            [ngClass]="{
+              error:
+                error['passwordRequired'] ||
+                error['passwordMinLength'] ||
+                error['passwordMaxLength']
+            }"
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <div *ngIf="error['passwordRequired']" class="error-message">
+            Password is required.
+          </div>
+          <div
+            *ngIf="error['passwordMinLength'] || error['passwordMaxLength']"
+            class="error-message"
+          >
+            Password must be 6–16 characters.
+          </div>
+        </div>
+
+        <input type="submit" value="CLAIM YOUR FREE TRIAL" class="form-btn" />
+      </form>
       <footer class="footer">
         By clicking the button. you are agreeing to out
         <span class="footer-terms">Terms and Service</span>
       </footer>
     </main>
+    } @else{
+    <main class="form">
+      <div class="succsess">{{ fullName }} signed up successfuly</div>
+      <footer class="footer">
+        By clicking the button. you are agreeing to out
+        <span class="footer-terms">Terms and Service</span>
+      </footer>
+    </main>
+    }
   </section>
 </div>
