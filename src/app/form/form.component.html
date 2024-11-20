@@ -1,0 +1,78 @@
+<form [formGroup]="signUpForm" (submit)="onSubmit()">
+  @if(!signedUp){
+  <div class="input-wrapper">
+    <input
+      [ngClass]="{ error: error['firstName'] }"
+      type="text"
+      placeholder="{{ texts?.form.firstNamePlaceholder }}"
+      formControlName="firstName"
+    />
+    <div *ngIf="error['firstName']" class="error-message">
+      {{ texts?.form.errorMessages.firstNameRequired }}
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <input
+      [ngClass]="{ error: error['lastName'] }"
+      type="text"
+      placeholder="{{ texts?.form.lastNamePlaceholder }}"
+      formControlName="lastName"
+    />
+    <div *ngIf="error['lastName']" class="error-message">
+      {{ texts?.form.errorMessages.lastNameRequired }}
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <input
+      [ngClass]="{
+        error: error['emailRequired'] || error['emailInvalid']
+      }"
+      type="email"
+      placeholder="{{ texts?.form.emailPlaceholder }}"
+      formControlName="email"
+    />
+    <div *ngIf="error['emailRequired']" class="error-message">
+      {{ texts?.form.errorMessages.emailRequired }}
+    </div>
+    <div *ngIf="error['emailInvalid']" class="error-message">
+      {{ texts?.form.errorMessages.emailInvalid }}
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <input
+      [ngClass]="{
+        error:
+          error['passwordRequired'] ||
+          error['passwordMinLength'] ||
+          error['passwordMaxLength']
+      }"
+      type="password"
+      placeholder="{{ texts?.form.passwordPlaceholder }}"
+      formControlName="password"
+    />
+    <div *ngIf="error['passwordRequired']" class="error-message">
+      {{ texts?.form.errorMessages.passwordRequired }}
+    </div>
+    <div
+      *ngIf="error['passwordMinLength'] || error['passwordMaxLength']"
+      class="error-message"
+    >
+      {{ texts?.form.errorMessages.passwordInvalid }}
+    </div>
+  </div>
+
+  <input
+    type="submit"
+    value="{{ texts?.form.submitButton }}"
+    class="form-btn"
+  />
+  } @else{
+  <div class="succsess">
+    {{ texts?.form.succsses }} {{ fullName }} {{ texts?.form.checkGit }}
+    <a href="https://github.com/DmitriPer/SignUpPage">{{ texts?.form.here }}</a>
+  </div>
+  }
+</form>

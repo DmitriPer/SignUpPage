@@ -1,0 +1,52 @@
+.error-message {
+  display: block;
+  font-size: 0.9rem;
+  color: hsl(0, 100%, 74%);
+  text-align: end;
+  margin-block-end: -15px;
+  margin-inline-end: 25px;
+  @media (min-width: 1030px) {
+    margin-inline-end: 50px;
+  }
+}
+
+.succsess {
+  color: black;
+  font-size: xx-large;
+  margin-block-end: 5px;
+  line-height: 1.2;
+  @media (min-width: 1030px) {
+    font-size: xxx-large;
+  }
+}
+.form-btn {
+  width: 82%;
+  text-align: center;
+  background: hsl(154, 59%, 51%);
+  border: 0;
+  color: white;
+  text-indent: 0;
+}
+.input-wrapper {
+  position: relative;
+  margin-bottom: 15px;
+  width: 320px;
+  @media (min-width: 1030px) {
+    width: 490px;
+  }
+}
+input {
+  border-radius: 5px;
+  border: 0.5px solid hsl(246, 25%, 77%);
+  width: 80%;
+  height: 50px;
+  margin-block: 10px;
+  font-size: medium;
+  text-indent: 20px;
+  font-weight: bold;
+  &.error {
+    background: url("../../../public/icon-error.svg") no-repeat right;
+    background-position: calc(100% - 10px);
+    outline: 1px solid hsl(0, 100%, 74%);
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "title": "Learn to code by watching others",
+  "subText": "See how experienced developers solve problems in real-time.Watching screpted tutorials is great, but understanding how developers think is inaluable.",
+  "advertismentBold": "Try free 7 days",
+  "advertisment": "then $20/mo. thereafter",
+  "form": {
+    "firstNamePlaceholder": "First Name",
+    "lastNamePlaceholder": "Last Name",
+    "emailPlaceholder": "Email Address",
+    "passwordPlaceholder": "Password",
+    "submitButton": "CLAIM YOUR FREE TRIAL",
+    "errorMessages": {
+      "firstNameRequired": "First Name is required.",
+      "lastNameRequired": "Last Name is required.",
+      "emailRequired": "Email is required.",
+      "emailInvalid": "Invalid email address.",
+      "passwordRequired": "Password is required.",
+      "passwordInvalid": "Password must be 6–16 characters."
+    },
+    "succsses": "Thank you testing, the data doesnt saved anywhere",
+    "checkGit": "please view my code in this site ",
+    "here": "here."
+  },
+  "footer": "By clicking the button, you are agreeing to our",
+  "footerBold": "Terms and Service"
+}

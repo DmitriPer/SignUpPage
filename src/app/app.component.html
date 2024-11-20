@@ -1,101 +1,21 @@
 <div class="container">
   <section class="header">
-    <h1 class="title">Learn to code by watching others</h1>
+    <h1 class="title">{{ texts?.title }}</h1>
 
     <p class="sub-text">
-      See how experienced developers solve problems in real-time.Watching
-      screpted tutorials is great, but understanding how developers think is
-      inaluable.
+      {{ texts?.subText }}
     </p>
   </section>
 
   <section class="main-form">
-    <aside class="advertisement">
-      <span>Try free 7 days </span>then $20/mo. thereafter
-    </aside>
+    <app-pop-message></app-pop-message>
 
-    @if(!signedUp){
     <main class="form">
-      <form [formGroup]="signUpForm" (submit)="onSubmit()">
-        <div class="input-wrapper">
-          <input
-            [ngClass]="{ error: error['firstName'] }"
-            type="text"
-            placeholder="First Name"
-            formControlName="firstName"
-          />
-          <div *ngIf="error['firstName']" class="error-message">
-            First Name is required.
-          </div>
-        </div>
-
-        <div class="input-wrapper">
-          <input
-            [ngClass]="{ error: error['lastName'] }"
-            type="text"
-            placeholder="Last Name"
-            formControlName="lastName"
-          />
-          <div *ngIf="error['lastName']" class="error-message">
-            Last Name is required.
-          </div>
-        </div>
-
-        <div class="input-wrapper">
-          <input
-            [ngClass]="{
-              error: error['emailRequired'] || error['emailInvalid']
-            }"
-            type="email"
-            placeholder="Email Address"
-            formControlName="email"
-          />
-          <div *ngIf="error['emailRequired']" class="error-message">
-            Email is required.
-          </div>
-          <div *ngIf="error['emailInvalid']" class="error-message">
-            Invalid email address.
-          </div>
-        </div>
-
-        <div class="input-wrapper">
-          <input
-            [ngClass]="{
-              error:
-                error['passwordRequired'] ||
-                error['passwordMinLength'] ||
-                error['passwordMaxLength']
-            }"
-            type="password"
-            placeholder="Password"
-            formControlName="password"
-          />
-          <div *ngIf="error['passwordRequired']" class="error-message">
-            Password is required.
-          </div>
-          <div
-            *ngIf="error['passwordMinLength'] || error['passwordMaxLength']"
-            class="error-message"
-          >
-            Password must be 6–16 characters.
-          </div>
-        </div>
-
-        <input type="submit" value="CLAIM YOUR FREE TRIAL" class="form-btn" />
-      </form>
+      <app-form></app-form>
       <footer class="footer">
-        By clicking the button. you are agreeing to out
-        <span class="footer-terms">Terms and Service</span>
+        {{ texts?.footer }}
+        <span class="footer-terms">{{ texts?.footerBold }}</span>
       </footer>
     </main>
-    } @else{
-    <main class="form">
-      <div class="succsess">{{ fullName }} signed up successfuly</div>
-      <footer class="footer">
-        By clicking the button. you are agreeing to out
-        <span class="footer-terms">Terms and Service</span>
-      </footer>
-    </main>
-    }
   </section>
 </div>
